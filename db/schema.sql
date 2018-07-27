@@ -8,6 +8,7 @@ CREATE TABLE user
     lastName varchar(255) NOT NULL,
     username varchar(255),
     EmailAddress VARCHAR(255) NOT NULL UNIQUE,
+	hola VARCHAR(255) NOT NULL,
 	passwordUser BINARY(64) NOT NULL,
 	PRIMARY KEY (id)
 );
