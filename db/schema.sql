@@ -4,7 +4,8 @@ USE postDB;
 CREATE TABLE user
 (
 	id int AUTO_INCREMENT,
-	UserName varchar(255) NOT NULL,
+	firstName varchar(255) NOT NULL,
+    lastName varchar(255) NOT NULL,
     EmailAddress VARCHAR(255) NOT NULL UNIQUE,
 	passwordUser BINARY(64) NOT NULL,
 	PRIMARY KEY (id)
@@ -12,7 +13,7 @@ CREATE TABLE user
 
 CREATE TABLE showGuides
 (
-    NoGuia int NOT NULL,
+    NoGuia varchar(255) NOT NULL,
 	Paqueteria varchar(255) NOT NULL,
     Origen varchar(255),
 	Destino varchar(255),
