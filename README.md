@@ -1,4 +1,4 @@
-# post-it
+# Track-it
 Tracking app for postal services such as fedex, DHL, etc
 
 **4 screens**
