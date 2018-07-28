@@ -15,7 +15,7 @@ $(document).ready(function () {
         if (!carrierInput.val().trim().trim()||!trackingNum.val().trim().trim())  {
           return;
         }
-        // Calling the upsertAuthor function and passing in the value of the name input
+      
         writeTrack({
           Paqueteria: carrierInput.val().trim(),
           NoGuia: trackingNum.val().trim()

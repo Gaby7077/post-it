@@ -14,7 +14,7 @@ module.exports = function(app) {
 
 //Route to write new track and it current status
 app.post("/api/authors", function(req, res) {
-  carriertrack.status(req.Body.Paqueteria, req.Body.NoGuia);
+  var status = carriertrack.Status(req.body.Paqueteria, req.body.NoGuia);
   db.Track.create(req.body).then(function(dbTracks) {
     res.json(dbTracks);
   });
