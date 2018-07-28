@@ -1,4 +1,5 @@
 var db = require("../models");
+var carriertrack = require("../utils/carriers.js")
 
 
 module.exports = function(app) {
@@ -13,8 +14,8 @@ module.exports = function(app) {
 
 //Route to write new track and it current status
 app.post("/api/authors", function(req, res) {
-  
-  db.Author.create(req.body).then(function(dbAuthor) {
-    res.json(dbAuthor);
+  carriertrack.status(req.Body.Paqueteria, req.Body.NoGuia);
+  db.Track.create(req.body).then(function(dbTracks) {
+    res.json(dbTracks);
   });
 });
