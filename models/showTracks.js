@@ -1,23 +1,23 @@
 module.exports = function(sequelize, DataTypes) {
   var ShowTracks = sequelize.define("ShowTracks", {
-    NoGuia: {
+    track: {
       type: DataTypes.STRING,
       allowNull: false,
       primaryKey: true,
     },
-    paqueteria: {
+    carrier: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    origen: {
+    origin: {
       type: DataTypes.STRING,
       allowNull: true,
     },
-    destino: {
+    destination: {
       type: DataTypes.STRING,
       allowNull: true,
     },
-    estatus: {
+    status: {
       type: DataTypes.STRING,
       allowNull: true,
     },

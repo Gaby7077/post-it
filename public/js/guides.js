@@ -17,8 +17,8 @@ $(document).ready(function () {
         }
       
         writeTrack({
-          Paqueteria: carrierInput.val().trim(),
-          NoGuia: trackingNum.val().trim()
+          carrier: carrierInput.val().trim(),
+          track: trackingNum.val().trim()
         });
       }
 
