@@ -5,5 +5,5 @@ INSERT INTO user (firstName, lastName, EmailAddress, passwordUser) VALUES ('Gaby
 
 
 
-INSERT INTO showGuides (NoGuia, Paqueteria) VALUES ('9662271426', 'DHL');
-INSERT INTO showGuides (NoGuia, Paqueteria) VALUES ('772780646632', 'FEDEX');
+INSERT INTO showTracks (NoGuia, paqueteria) VALUES ('9662271426', 'DHL');
+INSERT INTO showTracks (NoGuia, paqueteria) VALUES ('772780646632', 'FEDEX');
