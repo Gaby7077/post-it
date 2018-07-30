@@ -1,5 +1,5 @@
 var request = require("request");
-
+var db = require("../models");
 
 module.exports = {
     Status: function(carrier,track) {
@@ -22,7 +22,7 @@ switch(carrier) {
             recipientCountry : (JSON.parse(body).results[0].destination.value).split("-")[2],
             status : JSON.parse(body).results[0].delivery.status
             };
-        //console.log(status);
+        console.log(status);
         });
         break;
     case "FEDEX":
@@ -47,7 +47,7 @@ switch(carrier) {
             recipientCountry :JSON.parse(body).TrackPackagesResponse.packageList[0].recipientCntryCD,
             status : JSON.parse(body).TrackPackagesResponse.packageList[0].keyStatus
             };
-        // console.log(status);
+         console.log(status);
         });
         break;
     case "UPS":
@@ -76,7 +76,7 @@ switch(carrier) {
             recipientCountry :body.TrackResponse.Shipment.ShipmentAddress[1].Address.CountryCode,
             status : body.TrackResponse.Shipment.Package.Activity[0].Status.Description
             };
-            //console.log(status);
+            console.log(status);
         });
         break;  
     }   

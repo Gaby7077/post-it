@@ -21,7 +21,10 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING,
       allowNull: true,
     },
-    
+    id: {
+      type: DataTypes.STRING, 
+      primaryKey: true
+    }
   });
   return ShowTracks;
 };
