@@ -1,27 +1,30 @@
 module.exports = function(sequelize, DataTypes) {
-  var ShowTracks = sequelize.define("ShowTracks", {
-    track: {
+  var Users = sequelize.define("Users", {
+    id: {
+      type: DataTypes.INTEGER,
+      autoIncrement: true,
+      primaryKey: true
+    },
+    firstName: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    lastName: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    EmailAddress: {
       type: DataTypes.STRING,
       allowNull: false,
-      primaryKey: true,
+      unique: true
     },
-    carrier: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    origin: {
-      type: DataTypes.STRING,
-      allowNull: true,
-    },
-    destination: {
-      type: DataTypes.STRING,
-      allowNull: true,
-    },
-    status: {
-      type: DataTypes.STRING,
-      allowNull: true,
-    },
-    
+    passwordUser: {
+      type: DataTypes.STRING.BINARY,
+      allowNull: false
+    }
   });
-  return ShowTracks;
+
+
+
+  return Users;
 };
