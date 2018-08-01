@@ -5,7 +5,7 @@ var passport   = require('passport');
 var session    = require('express-session');
 var bodyParser = require('body-parser');
 var exphbs     = require('express-handlebars');
-var db = require("./app/models");
+var db = require("./models");
 
 var PORT = process.env.PORT || 3000;
 
@@ -33,16 +33,16 @@ res.send('Welcome to our code tracking app!');
 
 
 //Models
-var models = require("./app/models");
+var models = require("./models");
 
 
 //Routes
-var authRoute = require('./app/routes/auth.js')(app,passport);
-require("./app/routes/apiRoutes")(app);
-require("./app/routes/htmlRoutes")(app);
+var authRoute = require('./routes/auth.js')(app,passport);
+require("./routes/apiRoutes")(app);
+require("./routes/htmlRoutes")(app);
 
 //load passport strategies
-require('./app/config/passport/passport.js')(passport,models.user);
+require('./config/passport/passport.js')(passport,models.user);
 
 
 //Sync Database
