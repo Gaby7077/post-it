@@ -1,9 +1,15 @@
 module.exports = function(sequelize, DataTypes) {
   var ShowTracks = sequelize.define("ShowTracks", {
+    id: {
+      type: DataTypes.INTEGER, 
+      autoIncrement: true,
+      primaryKey: true, 
+      allowNull: true,
+    },
     track: {
       type: DataTypes.STRING,
       allowNull: false,
-      primaryKey: true,
+      unique: true,
     },
     carrier: {
       type: DataTypes.STRING,
@@ -20,11 +26,11 @@ module.exports = function(sequelize, DataTypes) {
     status: {
       type: DataTypes.STRING,
       allowNull: true,
-    },
-    id: {
-      type: DataTypes.STRING, 
-      primaryKey: true
     }
-  });
+  },
+{
+  freezeTableName: true
+});
+
   return ShowTracks;
 };
