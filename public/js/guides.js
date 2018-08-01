@@ -2,7 +2,7 @@ $(document).ready(function () {
 
   var carrierInput = $("#carrier");
   var trackingNum = $("#tracking");
-  var trackContainer = $(".track-container");
+  //var trackContainer = $(".track-container");
   var trackingList = $("tbody");
 
   $(document).on("submit", "#new-guide", handleAuthorFormSubmit);
@@ -57,17 +57,17 @@ $(document).ready(function () {
   }  
   
   function renderTrackList(rows) {
-    trackingList.children().not(":last").remove();
+    trackingList.children().remove();
     if (rows.length) {
       console.log(rows);
       trackingList.prepend(rows);
     }
   }
 
-
   function handleDeleteButtonPress() {
     var listItemData = $(this).parent("td").parent("tr").data("track");
     var track = listItemData.track;
+    console.log("entro a borrar " + track);
     $.ajax({
       method: "DELETE",
       url: "/api/tracks/" + track
