@@ -14,12 +14,21 @@ module.exports = function(app) {
 
 //Route to write new track and it current status
 app.post("/api/tracks", function(req, res) {
- var status = carriertrack.Status(req.body.carrier, req.body.track)
-    console.log("el status es " +status);
-
-  db.ShowTracks.create(req.body).then(function(dbTracks) {
+carriertrack.Status(req.body.carrier, req.body.track).then(function(status){
+  console.log ( " dentro del then de carriertrack "+status);
+  db.ShowTracks.create(
+    {
+    track: req.body.track,
+    carrier: req.body.carrier,
+    origin: status.shipperCity,
+    destination: status.recipientCity,
+    status: status.status
+    }  
+  ).then(function(dbTracks) {
+    console.log("ya llego al then de la escritura");
     res.json(dbTracks);
   });
+});
 });
 
 
