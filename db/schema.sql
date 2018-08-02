@@ -1,18 +1,22 @@
 CREATE DATABASE postDB;
 USE postDB;
 
-CREATE TABLE user
-(
-	id int AUTO_INCREMENT,
-	UserName varchar(255) NOT NULL,
-    EmailAddress VARCHAR(255) NOT NULL UNIQUE,
-	passwordUser BINARY(64) NOT NULL,
-	PRIMARY KEY (id)
-);
+CREATE TABLE users (
+  id int(11) NOT NULL AUTO_INCREMENT,
+  firstname varchar(255) DEFAULT NULL,
+  lastname varchar(255) DEFAULT NULL,
+  email varchar(255) DEFAULT NULL,
+  password varchar(255) NOT NULL,
+  last_login datetime DEFAULT NULL,
+  status enum('active','inactive') DEFAULT 'active',
+  createdAt datetime NOT NULL,
+  updatedAt datetime NOT NULL,
+  PRIMARY KEY (id)
+) 
 
 CREATE TABLE showGuides
 (
-    NoGuia int NOT NULL,
+    NoGuia varchar(255) NOT NULL,
 	Paqueteria varchar(255) NOT NULL,
     Origen varchar(255),
 	Destino varchar(255),
