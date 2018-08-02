@@ -1,24 +1,47 @@
 var db = require("../models");
+var carriertrack = require("../utils/carriers.js")
+
 
 module.exports = function(app) {
-  // Get all examples
-  app.get("/api/examples", function(req, res) {
-    db.Example.findAll({}).then(function(dbExamples) {
-      res.json(dbExamples);
+
+  // Api route to get all guides and its info from the database
+  app.get("/api/tracks", function(req, res) {
+    db.ShowTracks.findAll({}).then(function(dbTracks) {
+      res.json(dbTracks);
     });
   });
 
-  // Create a new example
-  app.post("/api/examples", function(req, res) {
-    db.Example.create(req.body).then(function(dbExample) {
-      res.json(dbExample);
-    });
-  });
 
-  // Delete an example by id
-  app.delete("/api/examples/:id", function(req, res) {
-    db.Example.destroy({ where: { id: req.params.id } }).then(function(dbExample) {
-      res.json(dbExample);
-    });
+//Route to write new track and it current status
+app.post("/api/tracks", function(req, res) {
+carriertrack.Status(req.body.carrier, req.body.track).then(function(status){
+  console.log ( " dentro del then de carriertrack "+status);
+  db.ShowTracks.create(
+    {
+    track: req.body.track,
+    carrier: req.body.carrier,
+    origin: status.shipperCity,
+    destination: status.recipientCity,
+    status: status.status
+    }  
+  ).then(function(dbTracks) {
+    console.log("ya llego al then de la escritura");
+    res.json(dbTracks);
   });
+});
+});
+
+
+// Route to delete a record from the database
+app.delete("/api/tracks/:track", function(req, res) {
+  db.ShowTracks.destroy({
+    where: {
+      track: req.params.track
+    }
+  }).then(function(dbTracks) {
+    res.json(dbTracks);
+  });
+});
+
+
 };
