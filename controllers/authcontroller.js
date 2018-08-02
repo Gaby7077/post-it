@@ -9,7 +9,9 @@ exports.signin = function(req,res){
 }
 
 exports.dashboard = function(req,res){
-	res.render('dashboard');
+  res.render('dashboard', { emailaddress: req.user.email });
+  var email = req.user.email;
+  console.log('Testing from authcontroller file: ' + email);
 }
 
 
