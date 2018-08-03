@@ -1,20 +1,5 @@
 $(document).ready(function () {
 
-<<<<<<< HEAD
-    var carrierInput = $("#carrier");
-    var trackingNum = $("#tracking");
-    var guidesList = $("tbody");
-    var guidesContainer = $(".guides-container");
-  
-
-  $(document).on("submit", "#author-form", handleFormSubmit);
-  $(document).on("click", ".delete-author", handleDeleteButtonPress);
-
-
-
-
-
-=======
   var carrierInput = $("#carrier");
   var trackingNum = $("#tracking");
   //var trackContainer = $(".track-container");
@@ -89,6 +74,5 @@ $(document).ready(function () {
     })
       .then(getTracks);
   }
->>>>>>> d44400ec457966b60434e496a7caec443d8056c6
 
 });
