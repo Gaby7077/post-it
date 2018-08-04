@@ -6,6 +6,7 @@ var session    = require('express-session');
 var bodyParser = require('body-parser');
 var exphbs     = require('express-handlebars');
 var db = require("./models");
+var path = require("path");
 
 var PORT = process.env.PORT || 3000;
 
@@ -20,6 +21,8 @@ app.use(express.static(__dirname + "/public/"));
 app.use(session({ secret: 'keyboard cat',resave: true, saveUninitialized:true})); // session secret
 app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
+app.use(express.static(path.join(__dirname, '/public')));
+
 
 
  //For Handlebars
