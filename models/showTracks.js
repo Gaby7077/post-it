@@ -32,5 +32,16 @@ module.exports = function(sequelize, DataTypes) {
   freezeTableName: true
 });
 
+ShowTracks.associate = function(models) {
+  
+  ShowTracks.belongsTo(models.User, {
+    foreignKey: {
+      allowNull: false
+    }
+  });
+};
+
+
   return ShowTracks;
 };
+
