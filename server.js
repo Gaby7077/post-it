@@ -42,7 +42,7 @@ require("./routes/apiRoutes")(app);
 require("./routes/htmlRoutes")(app);
 
 //load passport strategies
-require('./config/passport/passport.js')(passport,models.user);
+require('./config/passport/passport.js')(passport,models.User);
 
 
 //Sync Database
