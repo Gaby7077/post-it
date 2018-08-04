@@ -5,9 +5,15 @@ var carriertrack = require("../utils/carriers.js")
 module.exports = function(app) {
 
   // Api route to get all guides and its info from the database
-  app.get("/api/tracks", function(req, res) {
-    db.ShowTracks.findAll({}).then(function(dbTracks) {
-      res.json(dbTracks);
+  app.get("/api/tracks/:id", function(req, res) {
+
+    db.ShowTracks.findAll({
+      include: [{
+        model: db.User,
+        where: { id: req.params.id }
+    }]
+    }).then(function(result) {
+      res.json(result);
     });
   });
 
@@ -22,7 +28,8 @@ carriertrack.Status(req.body.carrier, req.body.track).then(function(status){
     carrier: req.body.carrier,
     origin: status.shipperCity,
     destination: status.recipientCity,
-    status: status.status
+    status: status.status,
+    UserId: req.body.UserId
     }  
   ).then(function(dbTracks) {
     console.log("ya llego al then de la escritura");
