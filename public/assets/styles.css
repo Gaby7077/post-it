@@ -36,7 +36,9 @@ body{
   background-attachment: fixed;
 }
 
-
+.cuerpo-fondo{
+  background-image: url("seattle.png");
+}
 
 
 h1{
