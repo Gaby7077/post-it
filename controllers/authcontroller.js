@@ -1,3 +1,5 @@
+var db = require("../models");
+
 var exports = module.exports = {}
 
 exports.signup = function(req,res){
@@ -8,12 +10,21 @@ exports.signin = function(req,res){
 	res.render('signin');
 }
 
+//exports.tracking = function(req,res){
+//	res.render('tracking');
+//}
+
 exports.tracking = function(req,res){
-  res.render('tracking', {name: req.user.firstname, last: req.user.lastname, id1:req.user.id});
-  var id = req.user.id;
-  console.log('Testing from authcontroller file: ' + id);
-  module.exports = id;
+  db.ShowTracks.findAll({
+    where: {
+      UserId:req.user.id
+    }
+  }).then(function (tracks){
+    res.render('tracking', {name: req.user.firstname, last: req.user.lastname, id1:req.user.id, tracks: tracks});
+
+  })
 }
+
 
 
 exports.logout = function(req,res){
@@ -22,3 +33,5 @@ exports.logout = function(req,res){
   });
 
 }
+
+
