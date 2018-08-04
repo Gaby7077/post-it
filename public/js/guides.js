@@ -7,10 +7,10 @@ $(document).ready(function () {
 
   $(document).on("submit", "#new-guide", handleAuthorFormSubmit);
   $(document).on("click", ".delete-track", handleDeleteButtonPress);
-
+  
   getTracks();
 
-
+  
   function handleAuthorFormSubmit(event) {
     console.log("entro al submit, carrier "+carrierInput.val().trim()+" y track "+trackingNum.val().trim());
     event.preventDefault();
@@ -21,8 +21,7 @@ $(document).ready(function () {
   
     writeTrack({
       carrier: carrierInput.val().trim(),
-      track: trackingNum.val().trim(),
-      UserId:$("#userhbs").text()
+      track: trackingNum.val().trim()
     });
   }
 
@@ -47,9 +46,7 @@ $(document).ready(function () {
 
   function getTracks() {
     console.log("entro a get Tracks");
-    
-    
-    $.get("/api/tracks/" + $("#userhbs").text(), function(data) {
+    $.get("/api/tracks", function(data) {
       var rowsToAdd = [];
       for (var i = 0; i < data.length; i++) {
         rowsToAdd.push(createTrackRow(data[i]));
