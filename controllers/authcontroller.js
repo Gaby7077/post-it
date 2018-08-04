@@ -8,10 +8,11 @@ exports.signin = function(req,res){
 	res.render('signin');
 }
 
-exports.dashboard = function(req,res){
-  res.render('dashboard', { emailaddress: req.user.email });
-  var email = req.user.email;
-  console.log('Testing from authcontroller file: ' + email);
+exports.tracking = function(req,res){
+  res.render('tracking', {name: req.user.firstname, last: req.user.lastname, id1:req.user.id});
+  var id = req.user.id;
+  console.log('Testing from authcontroller file: ' + id);
+  module.exports = id;
 }
 
 
