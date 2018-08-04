@@ -22,7 +22,7 @@ $(document).ready(function () {
     writeTrack({
       carrier: carrierInput.val().trim(),
       track: trackingNum.val().trim(),
-      UserId: 1
+      UserId:$("userhbs").text()
     });
   }
 
