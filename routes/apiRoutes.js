@@ -6,6 +6,7 @@ module.exports = function(app) {
 
   // Api route to get all guides and its info from the database
   app.get("/api/tracks/:id", function(req, res) {
+console.log('llega id?');
 
     db.ShowTracks.findAll({
       include: [{
@@ -29,7 +30,7 @@ carriertrack.Status(req.body.carrier, req.body.track).then(function(status){
     origin: status.shipperCity,
     destination: status.recipientCity,
     status: status.status,
-    UserId: req.body.UserId
+    UserId:req.body.UserId
     }  
   ).then(function(dbTracks) {
     console.log("ya llego al then de la escritura");
